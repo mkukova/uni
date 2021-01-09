@@ -161,8 +161,13 @@ char Zero[11][10] =
 
 void Draw(int digits[5])
 {
+	for (int i = 0; i < 7; i++)
+	{
+		std::cout << endl;
+	}
 	for (int i = 0; i < 11; i++)
 	{
+		std::cout << setw(20);
 		for (int n = 0; n < 5; n++)
 		{
 			switch (digits[n])
@@ -171,7 +176,7 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << One[i][j];
+					std::cout << One[i][j];
 				}
 				break;
 			}
@@ -179,7 +184,7 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << Two[i][j];
+					std::cout << Two[i][j];
 				}
 				break;
 			}
@@ -187,7 +192,7 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << Three[i][j];
+					std::cout << Three[i][j];
 				}
 				break;
 			}
@@ -195,7 +200,7 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << Four[i][j];
+					std::cout << Four[i][j];
 				}
 				break;
 			}
@@ -203,7 +208,7 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << Five[i][j];
+					std::cout << Five[i][j];
 				}
 				break;
 			}
@@ -211,7 +216,7 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << Six[i][j];
+					std::cout << Six[i][j];
 				}
 				break;
 			}
@@ -219,7 +224,7 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << Seven[i][j];
+					std::cout << Seven[i][j];
 				}
 				break;
 			}
@@ -227,7 +232,7 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << Eight[i][j];
+					std::cout << Eight[i][j];
 				}
 				break;
 			}
@@ -235,7 +240,7 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << Nine[i][j];
+					std::cout << Nine[i][j];
 				}
 				break;
 			}
@@ -243,22 +248,22 @@ void Draw(int digits[5])
 			{
 				for (int j = 0; j < 10; j++)
 				{
-					cout << Zero[i][j];
+					std::cout << Zero[i][j];
 				}
 				break;
 			}
 			}
 
-			if (n==2 && (i==3 || i==4 || i == 6 || i==7))
+			if (n == 2 && (i == 3 || i == 4 || i == 6 || i == 7))
 			{
-				cout <<"  "<< (char)178 <<"  ";
+				std::cout << "  " << (char)178 << "  ";
 			}
 			else
 			{
-				cout << "     ";
+				std::cout << "     ";
 			}
 		}
-		cout << endl;
+		std::cout << endl;
 	}
 }
 
@@ -279,25 +284,28 @@ void Timer(int timerSeconds)
 
 	int digits[5] = { 0,0,0,0,0 };
 
-	do
+	while (sec != -1 || min != 0)
 	{
-		system("CLS");
+		std::system("CLS");
 		Digits(min, sec, digits);
 		Draw(digits);
-		sec--;
 		if (sec == 0 && min > 0)
 		{
 			min--;
 			sec = 59;
 		}
+		else
+		{
+			sec--;
+		}
 
 		sleep_for(nanoseconds(10));
 		sleep_until(system_clock::now() + seconds(1));
-	} while (sec != -1 || min != 0);
-
+	}
+	
 	Beep(500, 1000);
-	system("CLS");
-	cout << "Time's up!";
+	std::system("CLS");
+	std::cout << "Time's up!";
 }
 
 int main()
@@ -306,12 +314,12 @@ int main()
 	//checks for valid input
 	do
 	{
-		cout << "Enter seconds in range [1, 9999]: ";
-		cin >> timerSeconds;
+		std::cout << "Enter seconds in range [1, 9999]: ";
+		std::cin >> timerSeconds;
 	} while (timerSeconds < 0 || timerSeconds>9999);
-	
+
 	Timer(timerSeconds);
-	
+
 	return 0;
 }
 
