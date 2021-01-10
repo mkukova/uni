@@ -1,3 +1,18 @@
+/**
+*
+* Solution to course project # 10
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2020/2021
+*
+* @author Maria Kukova
+* @idnumber 62609
+* @compiler VC
+*
+* <main file, executing the program>
+*
+*/
+
 #include <iomanip> 
 #include <iostream> 
 #include <stdlib.h> 
